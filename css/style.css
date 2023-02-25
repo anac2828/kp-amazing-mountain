@@ -1,0 +1,275 @@
+ *,
+ *::before,
+ *::after {
+   box-sizing: border-box;
+ }
+
+ :root {
+   --clr-primary: #f70058;
+   --clr-dark: #0c0e36;
+   --clr-light: #fff;
+   --fw-normal: 400;
+   --fw-bold: 700;
+   --fw-black: 900;
+   --grid: minmax(1em, 10%) min-content minmax(10rem, 45ch) 1fr minmax(1em, max-content);
+ }
+
+ h1,
+ h2,
+ h3 {
+   line-height: 1;
+ }
+
+ p {
+   margin-top: 0;
+ }
+
+ .btn {
+   cursor: pointer;
+   padding: .5em 1.25em;
+   text-transform: uppercase;
+   font-weight: var(--fw-normal);
+   text-decoration: none;
+   display: inline-block;
+ }
+
+ /* only adds margin to buttons that come after a button (not the first one) */
+ /* .btn + .btn {
+  margin-left: 1em;
+} */
+
+ .btn--primary {
+   background-color: var(--clr-primary);
+   color: var(--clr-light);
+ }
+
+ .btn--primary:hover {
+   background-color: var(--clr-dark);
+   color: var(--clr-light);
+ }
+
+ .btn--outline {
+   background-color: transparent;
+   color: var(--clr-primary);
+   outline: 3px solid var(--clr-primary);
+   outline-offset: -3px;
+ }
+
+ .btn--outline:hover {
+   background-color: var(--clr-dark);
+   color: var(--clr-light);
+   outline-color: var(--clr-dark);
+ }
+
+
+
+ body {
+   margin: 0;
+   font-family: 'Work Sans', sans-serif;
+   color: var(--clr-dark);
+
+ }
+
+ header {
+   font-family: 'Roboto', sans-serif;
+   background-color: var(--clr-light);
+   text-align: center;
+   align-items: center;
+ }
+
+ .logo {
+   margin-top: 1.5rem;
+ }
+
+ .nav__list {
+   display: flex;
+   justify-content: space-evenly;
+   margin: 0;
+   padding: 1em;
+   list-style: none;
+   font-size: .875rem;
+   text-transform: uppercase;
+   font-weight: var(--fw-bold);
+   letter-spacing: 1px;
+ }
+
+ .nav__link {
+   text-decoration: none;
+   color: inherit;
+   transition: all .3s;
+ }
+
+ .nav__link:hover {
+   color: var(--clr-primary);
+ }
+
+ .weather {
+   display: grid;
+   background: var(--clr-dark);
+   grid-template-columns: min-content max-content;
+   color: var(--clr-light);
+ }
+
+ .weather__icon {
+   background-color: var(--clr-primary);
+   grid-row: 1 / span 2;
+   padding: .5em;
+   display: flex;
+ }
+
+ .weather__info {
+   display: flex;
+   gap: 1rem;
+   margin: 0;
+   margin-left: 0.75rem;
+   font-weight: var(--fw-normal);
+   color: rgba(255, 255, 255, 0.7);
+   font-size: .75rem;
+   letter-spacing: 1px;
+   text-align: left;
+   text-transform: uppercase;
+ }
+
+ .weather__info:first-of-type {
+   margin-top: 0.5rem;
+   margin-bottom: .5rem;
+   position: relative;
+ }
+
+ .weather__info:first-of-type::after {
+   content: '';
+   position: absolute;
+   background: #8A8A9D;
+   height: 1px;
+   width: calc(100% - .75rem);
+   bottom: -.25rem;
+ }
+
+ .weather__info:last-of-type {
+   margin-bottom: 0.5rem;
+ }
+
+ .weather__info span {
+   color: var(--clr-light);
+   font-size: .875rem;
+   margin-left: auto;
+   margin-right: .75rem;
+   text-transform: none;
+ }
+
+ /*  */
+
+ .main {
+   padding: 3em 1em 10rem;
+ }
+
+ .main__title {
+   font-size: 3rem;
+   line-height: 1;
+   font-weight: var(--fw-black);
+   margin-bottom: .75em;
+ }
+
+ .main--ski {
+   background-image: url(../images/sebastian-staines-xZIFEPtRsRI-unsplash.jpg);
+   background-size: cover;
+ }
+
+ .main__intro {
+   margin-bottom: 4em;
+ }
+
+ .main__btns {
+   display: flex;
+   gap: .5rem;
+   flex-wrap: wrap;
+ }
+
+ @media (min-width: 500px) {
+   .main {
+     display: grid;
+     justify-items: start;
+     grid-template-columns: var(--grid);
+   }
+
+   .main>* {
+     grid-column: 2 / 4;
+   }
+
+   .main--ski {
+     background-position: left bottom;
+   }
+ }
+
+ @media(min-width: 700px) {
+   header {
+     display: grid;
+     grid-template-columns: var(--grid);
+     grid-template-rows: 1fr 1fr;
+   }
+
+   /* .logo,
+   .nav,
+   .weather {
+     grid-row: 1;
+   } */
+
+   .logo {
+     grid-column: 2 / -1;
+     grid-row: 1;
+     margin-top: 0;
+     justify-self: center;
+   }
+
+   .nav,
+   .weather {
+     grid-row: 2;
+   }
+
+   .nav {
+     /* grid-column: 2 / 5; */
+     grid-column: 2;
+     justify-self: end;
+     /* margin-right: 2rem; */
+   }
+
+   .nav__list {
+     gap: 2rem;
+     padding: 0;
+   }
+
+   .weather {
+     justify-self: end;
+     grid-column: -2 / -1;
+   }
+
+   .main {
+     padding-inline: 0;
+   }
+
+   .main--ski {
+     background-position: center right;
+   }
+ }
+
+ @media (min-width: 1000px) {
+
+   header {
+     grid-template-rows: unset;
+   }
+
+   .logo,
+   .nav,
+   .weather {
+     grid-row: 1;
+   }
+
+   .logo {
+     grid-column: 2;
+   }
+
+   .nav {
+     grid-column: 2 / 5;
+     margin-right: 3rem;
+   }
+ }
