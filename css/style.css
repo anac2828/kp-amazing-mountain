@@ -83,6 +83,7 @@ header {
 
 .nav {
   padding-inline: 2rem;
+  margin-left: auto;
 }
 
 .nav__list {
@@ -198,6 +199,10 @@ header {
   .img-container {
     flex-basis: 100%;
     padding-block: 1rem;
+  }
+
+  .nav {
+    margin-left: 0;
   }
 
   .main {
